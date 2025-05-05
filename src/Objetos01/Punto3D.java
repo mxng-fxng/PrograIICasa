@@ -13,11 +13,10 @@ class Punto3D {
         y = y0;
         z = z0;
     }
-    //CONSTRUCTOR DEFAULT
-    Punto3D (){
-        x = 0;
-        y = 0;
-        z = 0;
-    }
+
+    //VISUALIZADOR
+    public String toString (){
+        return "(" + x + ", " + y + ", " + z + ")";
+    }    
 }
 
