@@ -4,7 +4,9 @@ package UsoClases032;
 
 import stdlib.StdDraw;
 import java.awt.Color;
+import java.util.Random;
 
+//Clase sin datos, compuesta únicamente por operaciones: Módulo funcional
 public class PuntoOps {
     
     /**
@@ -17,6 +19,29 @@ public class PuntoOps {
         return new Punto(x, y);
     }
 
+    /**
+    * Pinta el punto p con color c
+    */
+    public static void pintar (Punto p, Color c){
+        StdDraw.setScale(-10,10); //Tamaño del lienzo
+        StdDraw.setPenColor(c);//color del lapiz
+        StdDraw.setPenRadius(0.1);//tamaño del lapiz
+        StdDraw.point(p.getX(), p.getY());//las coordenadas del punto p
+    }
+
+    /**
+    * POST: resultado: un Punto con x e y aleatorias en {-n..n}
+    */
+
+    //hace uso de Random, clase del paquete java.util
+    public static Punto puntoRandom (int n){
+        Random random = new Random();//crea un generador de numeros aleatorios en java
+        //genera un numero entre 0 y n [0,n]
+        double x = random.nextDouble(n);
+        double y = random.nextDouble(n);
+        return new Punto(x,y);
+    }
+
     public static void main (String [] args){
         Punto p = new Punto(1, 2);
         Punto q = new Punto(-2, -2);
@@ -26,13 +51,7 @@ public class PuntoOps {
          * PuntoOps.puntoMedio(p,q); porque se ejecuta el metodo desde la consola
          * por eso pone: Clase.Metodo();
          */
-        
-         //dibujar puntos
-         StdDraw.setScale(-10,10);
-         StdDraw.setPenColor(Color.BLUE);
-         StdDraw.setPenRadius(0.1);
-         StdDraw.point(p.getX(), p.getY());
-         StdDraw.clear(Color.BLACK);
-         StdDraw.point(p.getX(), p.getY());
+        pintar(p, Color.BLUE);
+        System.out.println(puntoRandom(4).toString());//muestra por pantalla un punto aleatorio [0,4]
     }
 }
