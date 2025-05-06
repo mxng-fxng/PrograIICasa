@@ -52,6 +52,10 @@ public class Punto {
         y += dy;
     }
 
+    public double distancia(Punto q){
+        return Math.sqrt((x-q.x)*(x-q.x)+(y-q.y)*(y-q.y));
+    }
+
 
     //ejecución
     public static void main (String [] args){
