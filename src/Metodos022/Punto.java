@@ -32,6 +32,11 @@ public class Punto {
         return Math.sqrt((x-q.x)*(x-q.x)+(y-q.y)*(y-q.y));
     }
 
+    public boolean equals (Object o){ //Método de objeto
+        Punto aux= (Punto)o;//casting, para transformar el objeto tipo Object a tipo Punto
+        return x == aux.x && y == aux.y;
+    }
+
     //Ejecución
     public static void main(String[] args) {
         Punto origen = new Punto();
