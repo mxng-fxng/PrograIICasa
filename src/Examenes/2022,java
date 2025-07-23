@@ -1,0 +1,55 @@
+public class Comic extends Publicacion{
+    private String dibujante;
+    boolean integral;
+
+    public Comic (String titulo, String autor, String signatura, int nEjemplares, String dibujante, boolean integral){
+        super(titulo, autor, signatura, nEjemplares);
+        this.dibujante = dibujante;
+        this.integral = integral;
+    }
+
+    public String toString(){
+        return super.toString() + "dibujante: " + dibujante;
+    }
+
+    public String dibujante(){
+        return this.dibujante;
+    }
+
+    public boolean integral(){
+        return this.integral;
+    }
+}
+
+public String arrumbadas (String autor){
+    String arrumbadas = "";
+    for (int i = 0; i < catalogo.size(); i++){
+        if (catalogo.get(i).autor().equals(autor)) arrumbadas += catalogo.get(i).titulo() + " ";
+    }
+    return arrumbadas;
+}
+
+public void prestar (String signatura) throws RuntimeException{
+    for (int i = 0; i < catalogo.size(); i++){
+        if(catalogo.get(i).signatura().equals(signatura)){
+            catalogo.get(i).nEjemplares --;
+            catalogo.get(i).nVecesPrestado ++;
+        }
+        else if (catalogo.get(i).nEjemplares == 0){
+            throw new RuntimeException ("Publicación no disponible");
+        }
+        throw new RuntimeException ("Publicación no existente");
+    }
+}
+
+public Libro libroMasPrestado(){
+    int max = 0;
+    Libro libroMax;
+    for (int i = 0; i < catalogo.size(); i++){
+        if(catalogo.get(i).nVecesPrestado > max){
+            max = catalogo.get(i).nVecesPrestado;
+            libroMax = catalogo.get(i);
+        }
+    }
+    return libroMax;
+}
